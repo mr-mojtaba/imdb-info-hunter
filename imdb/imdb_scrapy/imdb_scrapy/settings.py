@@ -12,6 +12,8 @@ BOT_NAME = "imdb_scrapy"
 SPIDER_MODULES = ["imdb_scrapy.spiders"]
 NEWSPIDER_MODULE = "imdb_scrapy.spiders"
 
+LOG_LEVEL = 'INFO'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "imdb_scrapy (+http://www.yourdomain.com)"
