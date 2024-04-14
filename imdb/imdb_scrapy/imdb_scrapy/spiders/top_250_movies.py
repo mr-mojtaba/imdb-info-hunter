@@ -51,7 +51,7 @@ class Test(scrapy.Spider):
         print("*" * 20)
         print(self.i)
         print("Movie name: {}".format(movie_name))
-        print("Date of Release: {}".format(movie_rating))
+        print("Date of Release: {}".format(movie_release))
         print("IMDB Rating: {}/10 - {} Vote".format(movie_rating, movie_vote))
         print("Genre: {}".format(", ".join(str(item) for item in movie_genre)))
         print("Duration: {}".format(movie_duration))
