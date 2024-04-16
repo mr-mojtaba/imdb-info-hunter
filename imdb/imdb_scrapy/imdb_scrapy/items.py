@@ -11,6 +11,7 @@ class ImdbScrapyItem(scrapy.Item):
     movie_release = scrapy.Field()
     movie_rating = scrapy.Field()
     movie_vote = scrapy.Field()
+    vote_unit = scrapy.Field()
     movie_genre = scrapy.Field()
     movie_duration = scrapy.Field()
     movie_director = scrapy.Field()
