@@ -34,6 +34,7 @@ class Test(scrapy.Spider):
                 'ul.ipc-inline-list > li.ipc-inline-list__item > a.ipc-link--baseAlt[href*="releaseinfo"]::text').get()
         movie_rating = response.css("span.sc-bde20123-1::text").get()
         movie_vote = response.css("div.sc-bde20123-3::text").get()
+        vote_unit = None
         movie_genre = response.xpath("//div[@class='ipc-chip-list__scroller']//a//text()").getall()
         movie_duration = response.css('ul.ipc-inline-list > li.ipc-inline-list__item:nth-child(3)::text').get()
         movie_director = response.css("a.ipc-metadata-list-item__list-content-item::text").get()
@@ -45,6 +46,17 @@ class Test(scrapy.Spider):
         movie_synopsis = response.css('span.sc-466bb6c-1::text').get()
         movie_link = response.url
 
+        # Operations
+        for i in movie_vote:
+            if i == "K" or i == "M":
+                vote_unit = i
+                movie_vote = movie_vote.replace(i, "")
+
+        if vote_unit is not None:
+            unit = str(vote_unit)
+        else:
+            unit = ""
+
         self.i += 1
         # Prints.
         print("\t")
@@ -52,7 +64,7 @@ class Test(scrapy.Spider):
         print(self.i)
         print("Movie name: {}".format(movie_name))
         print("Date of Release: {}".format(movie_release))
-        print("IMDB Rating: {}/10 - {} Vote".format(movie_rating, movie_vote))
+        print("IMDB Rating: {}/10 - {}{} Vote".format(movie_rating, movie_vote, unit))
         print("Genre: {}".format(", ".join(str(item) for item in movie_genre)))
         print("Duration: {}".format(movie_duration))
         print("Director: {}".format(movie_director))
@@ -68,6 +80,7 @@ class Test(scrapy.Spider):
         item['movie_release'] = movie_release
         item['movie_rating'] = movie_rating
         item['movie_vote'] = movie_vote
+        item['vote_unit'] = vote_unit
         item['movie_genre'] = movie_genre
         item['movie_duration'] = movie_duration
         item['movie_director'] = movie_director
