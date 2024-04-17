@@ -14,9 +14,9 @@ class Movie(models.Model):
     link = models.URLField(null=False, max_length=100)
 
 
-class Genre(models.Model):
-    genre_id = models.AutoField(primary_key=True)
-    genre_name = models.CharField(null=False, max_length=20)
+# class Genre(models.Model):
+#     genre_id = models.AutoField(primary_key=True)
+#     genre_name = models.CharField(null=False, max_length=20, unique=True)
 
 
 class Director(models.Model):
@@ -24,19 +24,19 @@ class Director(models.Model):
     director_name = models.CharField(null=False, max_length=30)
 
 
-class Writer(models.Model):
-    writer_id = models.AutoField(primary_key=True)
-    writer_name = models.CharField(null=False, max_length=30)
+# class Writer(models.Model):
+#     writer_id = models.AutoField(primary_key=True)
+#     writer_name = models.CharField(null=False, max_length=30)
 
 
-class Actor(models.Model):
-    actor_id = models.AutoField(primary_key=True)
-    actor_name = models.CharField(null=False, max_length=30)
+# class Actor(models.Model):
+#     actor_id = models.AutoField(primary_key=True)
+#     actor_name = models.CharField(null=False, max_length=30)
 
 
-class MovieGenre(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    genre_id = models.ForeignKey(Genre, on_delete=models.CASCADE)
+# class MovieGenre(models.Model):
+#     movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
+#     genre_id = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
 
 class MovieDirector(models.Model):
@@ -44,11 +44,11 @@ class MovieDirector(models.Model):
     director_id = models.ForeignKey(Director, on_delete=models.CASCADE)
 
 
-class MovieWriter(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    Writer_id = models.ForeignKey(Writer, on_delete=models.CASCADE)
+# class MovieWriter(models.Model):
+#     movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
+#     Writer_id = models.ForeignKey(Writer, on_delete=models.CASCADE)
 
 
-class MovieActor(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    actor_id = models.ForeignKey(Actor, on_delete=models.CASCADE)
+# class MovieActor(models.Model):
+#     movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
+#     actor_id = models.ForeignKey(Actor, on_delete=models.CASCADE)
