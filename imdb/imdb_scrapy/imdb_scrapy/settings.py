@@ -1,3 +1,6 @@
+import sys
+import os
+
 # Scrapy settings for imdb_scrapy project
 #
 # For simplicity, this file contains only settings considered important or
@@ -13,6 +16,11 @@ SPIDER_MODULES = ["imdb_scrapy.spiders"]
 NEWSPIDER_MODULE = "imdb_scrapy.spiders"
 
 LOG_LEVEL = 'INFO'
+
+# Adding Django project path to PYTHONPATH.
+sys.path.append('D:/Projects/imdb-info-hunter/imdb')
+# Adding the path of the settings file of the Django project to the environment variable of the scrapy project.
+os.environ['DJANGO_SETTINGS_MODULE'] = 'imdb.settings'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +72,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "imdb_scrapy.pipelines.ImdbScrapyPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "imdb_scrapy.pipelines.ImdbScrapyPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
