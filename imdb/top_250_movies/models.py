@@ -13,15 +13,18 @@ class Movie(models.Model):
     synopsis = models.TextField(null=False)
     link = models.URLField(null=False, max_length=100)
 
+    class Meta:
+        unique_together = ('name', 'release')
+
 
 # class Genre(models.Model):
 #     genre_id = models.AutoField(primary_key=True)
 #     genre_name = models.CharField(null=False, max_length=20, unique=True)
 
 
-class Director(models.Model):
-    director_id = models.AutoField(primary_key=True)
-    director_name = models.CharField(null=False, max_length=30)
+# class Director(models.Model):
+#     director_id = models.AutoField(primary_key=True)
+#     director_name = models.CharField(null=False, max_length=30)
 
 
 # class Writer(models.Model):
@@ -39,9 +42,12 @@ class Director(models.Model):
 #     genre_id = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
 
-class MovieDirector(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    director_id = models.ForeignKey(Director, on_delete=models.CASCADE)
+# class MovieDirector(models.Model):
+#     movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
+#     director_id = models.ForeignKey(Director, on_delete=models.CASCADE)
+#
+#     class Meta:
+#         unique_together = ('movie_id', 'director_id')
 
 
 # class MovieWriter(models.Model):
