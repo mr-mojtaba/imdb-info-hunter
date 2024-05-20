@@ -40,12 +40,12 @@ class TopMovies(scrapy.Spider):
         movie_synopsis = response.css('span.sc-466bb6c-1::text').get()
         movie_link = response.url
 
-        # # Operations
-        # for i in movie_vote:
-        #     if i == "K" or i == "M":
-        #         vote_unit = i
-        #         movie_vote = movie_vote.replace(i, "")
-        #
+        # Operations
+        for i in movie_vote:
+            if i == "K" or i == "M":
+                vote_unit = i
+                movie_vote = movie_vote.replace(i, "")
+
         # if vote_unit is not None:
         #     unit = str(vote_unit)
         # else:

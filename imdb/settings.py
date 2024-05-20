@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'top_250_movies.apps.Top250MoviesConfig',
+    'imdb_scrapy',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +72,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'imdb.wsgi.application'
 
 
-# Database
+# ############################### #
+#             DATABASE            #
+# ############################### #
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {

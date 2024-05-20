@@ -1,6 +1,3 @@
-import sys
-import os
-
 # Scrapy settings for imdb_scrapy project
 #
 # For simplicity, this file contains only settings considered important or
@@ -10,17 +7,26 @@ import os
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import sys
+import django
+import os
+from pathlib import Path
+
+django_project_path = r'D:\Projects\imdb-info-hunter'
+sys.path.append(django_project_path)
+
+# Set the DJANGO_SETTINGS_MODULE environment variable
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "imdb.settings")
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+# Initialize Django
+django.setup()
+
 BOT_NAME = "imdb_scrapy"
 
 SPIDER_MODULES = ["imdb_scrapy.spiders"]
 NEWSPIDER_MODULE = "imdb_scrapy.spiders"
 
 LOG_LEVEL = 'INFO'
-
-# Adding Django project path to PYTHONPATH.
-sys.path.append('D:/Projects/imdb-info-hunter/imdb')
-# Adding the path of the settings file of the Django project to the environment variable of the scrapy project.
-os.environ['DJANGO_SETTINGS_MODULE'] = 'imdb.settings'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
